@@ -26,3 +26,10 @@
 .tabs {
     margin-bottom: 20px;
 }
+.dispNone {
+    display: none;
+}
+
+.dispBlock {
+    display: block;
+}

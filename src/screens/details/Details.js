@@ -46,21 +46,16 @@ class Details extends Component {
         }
     }
 
-    componentWillMount() {
-        let that = this;
-        let dataMovie = null;
-        let xhrMovie = new XMLHttpRequest();
-        xhrMovie.addEventListener("readystatechange", function () {
-            if (this.readyState === 4) {
-                that.setState({
-                    movie: JSON.parse(this.responseText)
-                });
-            }
+    async componentWillMount() {
+        const urlForMovie  = this.props.baseUrl  + "movies/" + this.props.match.params.id;
+        console.log('url', this.props.baseUrl);
+        console.log('match', this.props.match.params.id);
+        const responseForMovie = await fetch(urlForMovie);
+        const dataMovie = await responseForMovie.json();
+        this.setState ({
+            movie : dataMovie  
         });
 
-        xhrMovie.open("GET", this.props.baseUrl + "movies/" + this.props.match.params.id);
-        xhrMovie.setRequestHeader("Cache-Control", "no-cache");
-        xhrMovie.send(dataMovie);
     }
 
     artistClickHandler = (url) => {

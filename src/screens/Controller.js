@@ -10,14 +10,14 @@ import Confirmation from '../screens/confirmation/Confirmation';
 class Controller extends Component {
  
    render(){
-    const baseUrl='api/v1/';
+    const baseUrl='http://localhost:3000/api/v1/';
        return(
         <BrowserRouter>
         <div>
-          <Route exact path='/' render={(props) => <Home baseUrl={baseUrl}/>} />
-          <Route path='/movie/:id' render={(props) => <Details  baseUrl={baseUrl}/>} />
-          <Route path='/bookshow/:id' render={(props) => <BookShow baseUrl={baseUrl}/>} />
-          <Route path='/confirm/:id' render={(props) => <Confirmation baseUrl={baseUrl}/>} />
+          <Route exact path='/' render={(props) => <Home {...props} baseUrl={baseUrl} />} />
+          <Route path='/movie/:id' render={(props) => <Details {...props} baseUrl={baseUrl}/>} />
+          <Route path='/bookshow/:id' render={(props) => <BookShow {...props} baseUrl={baseUrl}/>} />
+          <Route path='/confirm/:id' render={(props) => <Confirmation {...props} baseUrl={baseUrl}/>} />
         </div>
       </BrowserRouter>
        );
